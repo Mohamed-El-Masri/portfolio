@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamed Sameh - Portfolio</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="icon" href="assets/img/favicon/favicon.ico" type="image/x-icon">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <canvas id="background-canvas"></canvas>
+    
+    <!-- Theme Toggle Button and Mobile Menu Toggle -->
+    <div class="top-controls">
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+            <i class="fas fa-sun"></i>
+        </button>
+    </div>
+
+    <div class="container">
+        <!-- Main Content Section -->
+        <div class="main-content">
+            <div class="intro-section">
+                <h1>Hi there!<br>I'm Mohamed.</h1>
+                
+                <div class="social-links">
+                    <a href="https://github.com/yourusername" target="_blank" class="social-icon github">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/yourusername" target="_blank" class="social-icon linkedin">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://wa.me/+201096761048" target="_blank" class="social-icon whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- About Section -->
+            <section id="about" class="about-section">
+                <p>
+                    As a Full-Stack .NET Web Developer, I specialize in building end-to-end applications using modern technologies. I'm passionate about creating seamless, high-quality solutions.
+                </p>
+                <p>
+                    My expertise spans both front-end and back-end development, with a focus on creating reliable server-side applications with:
+                </p>
+                <p>
+                    .NET/C#, ASP.NET Core, Angular, Entity Framework, and SQL Server
+                </p>
+                <p>
+                    I am experienced in clean code architecture and applying testing, creating high-quality applications that deliver business value.
+                </p>
+            </section>
+
+            <!-- Tech Stack Section -->
+            <section id="skills" class="skills-section">
+                <h2>Tech Stack</h2>
+                <div class="tech-grid">
+                    <div class="tech-item"><img src="assets/img/skills/csharp.png" alt="C#"><span>C#</span></div>
+                    <div class="tech-item"><img src="assets/img/skills/dotnet.png" alt=".NET"><span>.NET</span></div>
+                    <div class="tech-item"><img src="assets/img/skills/angular.png" alt="Angular"><span>Angular</span></div>
+                    <div class="tech-item"><img src="assets/img/skills/js.png" alt="JavaScript"><span>JavaScript</span></div>
+                    <div class="tech-item"><img src="assets/img/skills/html.png" alt="HTML"><span>HTML</span></div>
+                    <div class="tech-item"><img src="assets/img/skills/css.png" alt="CSS"><span>CSS</span></div>
+                    <div class="tech-item"><img src="assets/img/skills/sql.png" alt="SQL"><span>SQL</span></div>
+                    <div class="tech-item"><img src="assets/img/skills/ef.png" alt="Entity Framework"><span>Entity Framework</span></div>
+                    <div class="tech-item"><img src="assets/img/skills/cpp.png" alt="C++"><span>C++</span></div>
+                    <div class="tech-item"><img src="assets/img/skills/git.png" alt="Git"><span>Git</span></div>
+                    <div class="tech-item"><img src="assets/img/skills/linux.png" alt="Linux"><span>Linux</span></div>
+                    <div class="tech-item"><img src="assets/img/skills/mvc.png" alt="MVC"><span>MVC</span></div>
+                </div>
+            </section>
+
+            <!-- Projects Section -->
+            <section id="projects" class="projects-section">
+                <h2>Projects</h2>
+                <div class="project-card">
+                    <h3>Real Estate Development Platform</h3>
+                    <p>Full Stack project with ASP.NET Web API, Angular, SQL Server, Entity Framework, AutoMapper</p>
+                    <div class="project-image">
+                        <img src="assets/img/projects/project1.png" alt="Real Estate Development Platform">
+                    </div>
+                    <div class="project-actions">
+                        <a href="#" class="view-details">View in Detail</a>
+                        <a href="#" class="deployment">Deployment</a>
+                    </div>
+                    <div class="project-tags">
+                        <span>ASP.NET Web API</span>
+                        <span>Angular</span>
+                        <span>SQL Server</span>
+                        <span>Entity Framework</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Vyrlo – Local Directory for Businesses</h3>
+                    <p>Directory Website built with MVC, Entity Framework, and SignalR</p>
+                    <div class="project-image">
+                        <img src="assets/img/projects/project2.png" alt="Vyrlo Directory">
+                    </div>
+                    <div class="project-actions">
+                        <a href="#" class="view-details">View on GitHub</a>
+                        <a href="#" class="deployment">Video Demo</a>
+                    </div>
+                    <div class="project-tags">
+                        <span>MVC</span>
+                        <span>Entity Framework</span>
+                        <span>SignalR</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Government Building Permit Campaign</h3>
+                    <p>Arabic Landing Page built with React.js, Vite, CSS3, and JavaScript</p>
+                    <div class="project-image">
+                        <img src="assets/img/projects/project3.png" alt="Government Building Permit">
+                    </div>
+                    <div class="project-actions">
+                        <a href="#" class="view-details">View in Detail</a>
+                        <a href="#" class="deployment">Live Demo</a>
+                    </div>
+                    <div class="project-tags">
+                        <span>React.js</span>
+                        <span>Vite</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>E-Commerce Website</h3>
+                    <p>E-Commerce site built with HTML5, Native JavaScript, and CSS3</p>
+                    <div class="project-image">
+                        <img src="assets/img/projects/project4.png" alt="E-Commerce Website">
+                    </div>
+                    <div class="project-actions">
+                        <a href="#" class="view-details">View on GitHub</a>
+                        <a href="#" class="deployment">Live Demo</a>
+                    </div>
+                    <div class="project-tags">
+                        <span>HTML5</span>
+                        <span>JavaScript</span>
+                        <span>CSS3</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education Section -->
+            <section id="education" class="education-section">
+                <h2>Education & Training</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">
+                            <span>10/2024 – 06/2025</span>
+                            <span class="location">Assuit, Egypt</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>9-Month Professional Web Development Track</h3>
+                            <h4>Diploma</h4>
+                            <p>Focus Areas:</p>
+                            <ul>
+                                <li>.NET Core Full Stack Development, Angular, BI, CRM</li>
+                                <li>Advanced SQL, WPF, Entity Framework, Azure, DevOps</li>
+                            </ul>
+                            <p>Main Projects:</p>
+                            <ul>
+                                <li>Directory Website "Vyrlo" (MVC, EF, SignalR)</li>
+                                <li>Real Estate Company Website (Web API, Dashboard)</li>
+                                <li>E-Commerce Site (HTML5, Native JS, CSS3)</li>
+                                <li>Examination Management System (Adv DB)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">
+                            <span>05/2024 – 10/2024</span>
+                            <span class="location">Sohag, Egypt</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Intensive Code Camp – ITI</h3>
+                            <h4>Track: Software Engineering Fundamentals</h4>
+                            <p>Topics Covered:</p>
+                            <ul>
+                                <li>Programming (C/C++), OOP, DS & Algo, Database, Web (HTML/CSS, JS, PHP), Wordpress</li>
+                                <li>Operating Systems, Linux, Networking, Software Testing</li>
+                                <li>Soft Skills & Freelancing</li>
+                            </ul>
+                            <p>Main Projects:</p>
+                            <ul>
+                                <li>University Management System (C++)</li>
+                                <li>Examination Management System (DB)</li>
+                                <li>E-Commerce Website (JavaScript)</li>
+                                <li>UpWork Clone (WordPress)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">
+                            <span>2015 – 2020</span>
+                            <span class="location">6th October City, Egypt</span>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>October 6 University</h3>
+                            <h4>Bachelor of Civil Engineering</h4>
+                            <p>GPA: 3.21 (Very Good)</p>
+                            <p>Graduation Project: Project Management – Grade: Excellent</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Certificates Section -->
+            <section id="certificates" class="certificates-section">
+                <h2>Certificates</h2>
+                <div class="certificates-grid">
+                    <div class="certificate-card">
+                        <h3>CSS (Basic)</h3>
+                        <p>2025 - HackerRank</p>
+                        <a href="#" class="view-certificate">View Certificate</a>
+                    </div>
+                    
+                    <div class="certificate-card">
+                        <h3>JavaScript (Intermediate)</h3>
+                        <p>2025 - HackerRank</p>
+                        <a href="#" class="view-certificate">View Certificate</a>
+                    </div>
+                    
+                    <div class="certificate-card">
+                        <h3>Create An Animated Landing Page by HTML, CSS and JavaScript</h3>
+                        <p>2025 - Udemy</p>
+                        <a href="#" class="view-certificate">View Certificate</a>
+                    </div>
+                    
+                    <div class="certificate-card">
+                        <h3>C# (Basic)</h3>
+                        <p>2025 - HackerRank</p>
+                        <a href="#" class="view-certificate">View Certificate</a>
+                    </div>
+                    
+                    <div class="certificate-card">
+                        <h3>SQL (Advanced)</h3>
+                        <p>2025 - HackerRank</p>
+                        <a href="#" class="view-certificate">View Certificate</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section with improved layout -->
+            <section id="contact" class="contact-section">
+                <h2>Contact me</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <p>Let's Connect</p>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>eng.MohamedTayee@gmail.com</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-phone"></i>
+                                <span>+20 109 676 1048</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Cairo, Egypt</span>
+                            </div>
+                        </div>
+                        <div class="contact-social">
+                            <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+                            <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
+                            <a href="https://wa.me/+201096761048" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-form-container">
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label for="name">Full Name</label>
+                                <input type="text" id="name" name="name" placeholder="Ex. Mohamed Sameh" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="Ex. Abdo@gmail.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" placeholder="Ex. Message Title" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" placeholder="Your message here..." required></textarea>
+                            </div>
+                            <button type="submit" class="send-message-btn">Send Message <i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer with fixed layout -->
+            <footer>
+                <div class="footer-content">
+                    <div class="social-icons">
+                        <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://wa.me/+201096761048" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                    <p>&copy; 2023 Mohamed Sameh Ahmed - All rights reserved</p>
+                </div>
+            </footer>
+        </div>
+
+        <!-- Sidebar/Profile Section -->
+        <div class="profile-sidebar" id="profile-sidebar">
+            <div class="profile-container">
+                <div class="profile-pic">
+                    <img src="assets/img/profile.jpg" alt="Mohamed">
+                </div>
+                <h3 class="profile-name">Mohamed Sameh</h3>
+                <p class="profile-title">Full-Stack .NET Web Developer</p>
+                
+                <!-- Navigation moved to sidebar with 2-column layout -->
+                <nav class="sidebar-nav">
+                    <div class="nav-grid">
+                        <a href="#about"><i class="fas fa-user"></i> About</a>
+                        <a href="#skills"><i class="fas fa-code"></i> Skills</a>
+                        <a href="#projects"><i class="fas fa-project-diagram"></i> Projects</a>
+                        <a href="#education"><i class="fas fa-graduation-cap"></i> Education</a>
+                        <a href="#certificates"><i class="fas fa-certificate"></i> Certificates</a>
+                        <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+                    </div>
+                </nav>
+                
+                <div class="download-resume">
+                    <a href="assets/docs/resume.pdf" download class="download-cv-btn">
+                        <i class="fas fa-download"></i> DOWNLOAD CV
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/theme-toggle.js"></script>
+    <script src="assets/js/mobile-menu.js"></script>
+    <script src="assets/js/form-validation.js"></script>
+    <script src="assets/js/animations.js"></script>
+    <script src="assets/js/background-effects.js"></script>
+</body>
+</html>
