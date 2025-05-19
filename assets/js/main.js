@@ -9,36 +9,6 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // Initialize smooth scrolling for sidebar navigation links
     initSmoothScrolling();
-    
-    // Handle form submission
-    const contactForm = document.getElementById("contact-form");
-    if (contactForm) {
-        contactForm.addEventListener("submit", function(event) {
-            // Form validation is handled in form-validation.js
-            // This is just a fallback in case form-validation.js fails
-            if (!validateForm()) {
-                event.preventDefault();
-            }
-        });
-    }
-    
-    // Add animation delays to tech items
-    const techItems = document.querySelectorAll('.tech-item');
-    techItems.forEach((item, index) => {
-        item.style.animationDelay = `${index * 0.1}s`;
-    });
-    
-    // Social media links hover effects
-    const socialLinks = document.querySelectorAll('.social-icon, .social-icons a');
-    socialLinks.forEach(link => {
-        link.addEventListener('mouseenter', () => {
-            link.style.transform = 'translateY(-5px)';
-        });
-        
-        link.addEventListener('mouseleave', () => {
-            link.style.transform = '';
-        });
-    });
 });
 
 // Function to initialize smooth scrolling for sidebar navigation
@@ -69,24 +39,22 @@ function initSmoothScrolling() {
     });
 }
 
-// Function to validate the contact form (fallback validation)
-function validateForm() {
-    const name = document.getElementById("name").value;
-    const email = document.getElementById("email").value;
-    const subject = document.getElementById("subject").value;
-    const message = document.getElementById("message").value;
+// Remove all form handling code from here - it should be in form-validation.js only
 
-    if (!name || !email || !subject || !message) {
-        alert("Please fill in all required fields.");
-        return false;
-    }
+// Add animation delays to tech items
+const techItems = document.querySelectorAll('.tech-item');
+techItems.forEach((item, index) => {
+    item.style.animationDelay = `${index * 0.1}s`;
+});
+
+// Social media links hover effects
+const socialLinks = document.querySelectorAll('.social-icon, .social-icons a');
+socialLinks.forEach(link => {
+    link.addEventListener('mouseenter', () => {
+        link.style.transform = 'translateY(-5px)';
+    });
     
-    // Basic email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        alert("Please enter a valid email address.");
-        return false;
-    }
-    
-    return true;
-}
+    link.addEventListener('mouseleave', () => {
+        link.style.transform = '';
+    });
+});

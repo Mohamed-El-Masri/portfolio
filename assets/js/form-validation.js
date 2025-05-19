@@ -1,117 +1,89 @@
-document.addEventListener('DOMContentLoaded', function() {
+// Initialize EmailJS with your public key
+(function() {
+    emailjs.init("0jrveAI7UnN8l3sXW"); // Replace with your actual public key
+})();
+
+// Function to handle form submission
+function sendMail(event) {
+    event.preventDefault();
+
+    // Get form elements
     const form = document.getElementById('contact-form');
-    const nameInput = document.getElementById('name');
-    const emailInput = document.getElementById('email');
-    const subjectInput = document.getElementById('subject');
-    const messageInput = document.getElementById('message');
-    
-    form.addEventListener('submit', function(event) {
-        event.preventDefault();
-        
-        // Simple validation
-        let valid = true;
-        let errorMessage = '';
-        
-        // Validate name
-        if (nameInput.value.trim() === '') {
-            valid = false;
-            errorMessage += 'Name is required.\n';
-            highlightError(nameInput);
-        } else {
-            removeErrorHighlight(nameInput);
-        }
-        
-        // Validate email
-        if (emailInput.value.trim() === '') {
-            valid = false;
-            errorMessage += 'Email is required.\n';
-            highlightError(emailInput);
-        } else if (!validateEmail(emailInput.value.trim())) {
-            valid = false;
-            errorMessage += 'Please enter a valid email address.\n';
-            highlightError(emailInput);
-        } else {
-            removeErrorHighlight(emailInput);
-        }
-        
-        // Validate subject
-        if (subjectInput.value.trim() === '') {
-            valid = false;
-            errorMessage += 'Subject is required.\n';
-            highlightError(subjectInput);
-        } else {
-            removeErrorHighlight(subjectInput);
-        }
-        
-        // Validate message
-        if (messageInput.value.trim() === '') {
-            valid = false;
-            errorMessage += 'Message is required.\n';
-            highlightError(messageInput);
-        } else {
-            removeErrorHighlight(messageInput);
-        }
-        
-        if (valid) {
-            // Form is valid, show success message
-            showFormSuccess();
-            
-            // Reset the form
-            form.reset();
-        } else {
-            // Show error message
-            alert(errorMessage);
-        }
+    const submitButton = form.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton.innerHTML;
+
+    // Show loading state
+    submitButton.disabled = true;
+    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+    // Get form data
+    const templateParams = {
+        name: form.name.value,
+        email: form.email.value,
+        subject: form.subject.value,
+        message: form.message.value
+    };
+
+    // Send email using EmailJS
+    emailjs.send(
+        'service_6wgzufy', // Replace with your service ID
+        'template_2yfytih', // Replace with your template ID
+        templateParams
+    )
+    .then(function(response) {
+        // Show success message
+        showFormMessage('success', 'Thank you! Your message has been sent.');
+        form.reset();
+    })
+    .catch(function(error) {
+        // Show error message
+        showFormMessage('error', 'Sorry, something went wrong. Please try again later.');
+        console.error('EmailJS error:', error);
+    })
+    .finally(function() {
+        // Reset button state
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalButtonText;
     });
-    
-    // Helper function to validate email
-    function validateEmail(email) {
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(String(email).toLowerCase());
+
+    return false;
+}
+
+// Function to show form messages
+function showFormMessage(type, message) {
+    // Remove any existing message
+    const existingMessage = document.querySelector('.form-message');
+    if (existingMessage) {
+        existingMessage.remove();
     }
+
+    // Create new message element
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('form-message');
     
-    // Helper function to highlight error
-    function highlightError(input) {
-        input.style.borderColor = '#ff4b4b';
-        input.style.boxShadow = '0 0 0 3px rgba(255, 75, 75, 0.2)';
-    }
-    
-    // Helper function to remove error highlight
-    function removeErrorHighlight(input) {
-        input.style.borderColor = '';
-        input.style.boxShadow = '';
-    }
-    
-    // Helper function to show form success
-    function showFormSuccess() {
-        const successMessage = document.createElement('div');
-        successMessage.className = 'form-success';
-        successMessage.innerHTML = `
-            <i class="fas fa-check-circle"></i>
-            <p>Your message has been sent successfully!</p>
-            <p>I'll get back to you as soon as possible.</p>
+    if (type === 'success') {
+        messageDiv.innerHTML = `
+            <div class="form-success">
+                <i class="fas fa-check-circle"></i>
+                <p>Message Sent Successfully!</p>
+                <p>${message}</p>
+            </div>
         `;
-        
-        // Insert success message after form
-        form.parentNode.insertBefore(successMessage, form.nextSibling);
-        
-        // Hide the form
-        form.style.display = 'none';
-        
-        // Remove success message after 5 seconds and show form again
-        setTimeout(() => {
-            successMessage.remove();
-            form.style.display = 'block';
-        }, 5000);
+    } else {
+        messageDiv.innerHTML = `
+            <div class="form-error">
+                <i class="fas fa-exclamation-circle"></i>
+                <p>${message}</p>
+            </div>
+        `;
     }
-    
-    // Add input event listeners for real-time validation
-    const formInputs = [nameInput, emailInput, subjectInput, messageInput];
-    formInputs.forEach(input => {
-        input.addEventListener('input', () => {
-            if (input.value.trim() !== '') {
-                removeErrorHighlight(input);
-            }
-        });
-    });
-});
+
+    // Insert message after form
+    const form = document.getElementById('contact-form');
+    form.parentNode.insertBefore(messageDiv, form.nextSibling);
+
+    // Remove message after 5 seconds
+    setTimeout(() => {
+        messageDiv.remove();
+    }, 5000);
+}

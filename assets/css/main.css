@@ -1221,6 +1221,62 @@ footer p::before {
     transition: all 0.3s ease;
 }
 
+/* Form validation styles */
+.form-group input.error,
+.form-group textarea.error {
+    border-color: #ef4444;
+    background-color: rgba(239, 68, 68, 0.05);
+}
+
+.error-message {
+    color: #ef4444;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+    animation: slideIn 0.3s ease;
+}
+
+.error-message::before {
+    content: '⚠';
+    margin-right: 0.5rem;
+}
+
+/* Form success/error messages */
+.form-error {
+    background-color: rgba(239, 68, 68, 0.1);
+    border-left: 4px solid #ef4444;
+    color: var(--text-color);
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    animation: slideIn 0.3s ease;
+}
+
+.form-error i {
+    color: #ef4444;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.fa-spinner {
+    animation: spin 1s linear infinite;
+}
+
+/* Disable button styles */
+.send-message-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    background-color: var(--muted-color);
+}
+
 /* Media Queries */
 
 /* Mobile Styles */
