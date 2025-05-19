@@ -1,0 +1,628 @@
+/* Project Slider Styles */
+.project-slider-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    margin-bottom: 4rem;
+    aspect-ratio: 16 / 9;  /* Consistent aspect ratio for container */
+}
+
+.project-slider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    height: 100%;
+    width: 100%;
+}
+
+.slider-project {
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.project-card.slider-item {
+    width: 100%;
+    margin: 0;
+    border-radius: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: opacity 0.3s ease;
+}
+
+/* Project Image Sizing - Fixed dimensions for professional look */
+.project-card .project-image {
+    width: 100%;
+    height: 300px; /* Fixed height for all images */
+    overflow: hidden;
+    position: relative;
+    margin: 1rem 0;
+}
+
+.project-card .project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This ensures the image covers the area without distortion */
+    object-position: center; /* Centers the image */
+    transition: transform 0.5s ease;
+}
+
+/* Navigation Controls */
+.slider-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 10;
+    transform: translateY(-50%);
+}
+
+.slider-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(99, 102, 241, 0.8);
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+}
+
+/* Show buttons always on touch devices */
+@media (max-width: 768px) {
+    .slider-btn {
+        opacity: 0.8;
+    }
+}
+
+.project-slider-container:hover .slider-btn {
+    opacity: 1;
+}
+
+.slider-btn:hover {
+    background-color: var(--accent-color);
+    transform: scale(1.1);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.slider-btn:active {
+    transform: scale(0.95);
+}
+
+.slider-btn.prev {
+    left: 20px;
+}
+
+.slider-btn.next {
+    right: 20px;
+}
+
+/* Slider Indicators */
+.slider-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background-color: var(--accent-color);
+    width: 30px; /* Made slightly wider to indicate longer duration */
+    border-radius: 10px;
+}
+
+/* Progress Bar - Updated for smoother transitions */
+.slider-progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background-color: var(--accent-color);
+    width: 0;
+    transition: width 0.1s linear;
+    z-index: 10;
+}
+
+/* Animation for slider items */
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.slider-project.active .project-card {
+    animation: fadeInSlide 0.8s ease forwards;
+}
+
+/* Image Hint and Modal Styles */
+.project-image {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.image-hint-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 12px;
+    z-index: 5;
+}
+
+.image-hint-overlay i {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.image-hint-overlay span {
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.project-image:hover .image-hint-overlay {
+    opacity: 1;
+}
+
+/* Modal styles */
+.image-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.image-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+}
+
+.image-modal.active .modal-content {
+    transform: scale(1);
+}
+
+.modal-image {
+    display: block;
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+.close-modal {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.close-modal:hover {
+    background-color: var(--accent-hover);
+    transform: rotate(90deg);
+}
+
+/* Project Slider Navigation */
+.slider-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+    gap: 1.5rem;
+}
+
+.slider-nav-button {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 2px solid var(--accent-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.slider-nav-button:hover {
+    background-color: var(--accent-color);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.slider-nav-button:active {
+    transform: translateY(-1px);
+}
+
+.slider-indicator {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    background-color: var(--card-bg);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    border: 1px solid var(--card-border);
+    min-width: 70px;
+    text-align: center;
+}
+
+.slider-helper {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--card-bg);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    color: var(--muted-color);
+    border: 1px solid var(--card-border);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 10;
+}
+
+.slider-helper.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Image click hint styles */
+.project-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.image-click-hint {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 12px;
+    z-index: 5;
+}
+
+.image-click-hint i {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
+}
+
+.image-click-hint p {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 0 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.project-image:hover .image-click-hint {
+    opacity: 1;
+}
+
+/* Image Modal Styles */
+.project-image-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.project-image-modal.show-modal {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.project-image-modal.show-modal .modal-content {
+    transform: scale(1);
+}
+
+.modal-image {
+    display: block;
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.close-modal {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: none;
+}
+
+.close-modal:hover {
+    background-color: var(--accent-hover);
+    transform: rotate(90deg);
+}
+
+/* Animation for slide effect */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.animate-slide-in {
+    animation: slideIn 0.5s ease forwards;
+}
+
+/* Project Slider specific styles */
+
+/* Project Card in Slider */
+.project-card {
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Image container with hover effect */
+.project-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    margin: 1.5rem 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s ease;
+}
+
+.project-image:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.project-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.7s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+}
+
+/* Image click hint overlay */
+.image-click-hint {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    color: white;
+    cursor: pointer;
+}
+
+.image-click-hint i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.image-click-hint p {
+    font-size: 0.9rem;
+    color: white !important;
+    margin-bottom: 0 !important;
+}
+
+.project-image:hover .image-click-hint {
+    opacity: 1;
+}
+
+/* Project navigation controls */
+.project-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.project-nav-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--card-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 0 0.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.project-nav-btn:hover {
+    background-color: var(--accent-color);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(99, 102, 241, 0.3);
+}
+
+.project-nav-btn:active {
+    transform: translateY(-1px);
+}
+
+.project-nav-btn.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Project indicators */
+.project-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.project-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--card-border);
+    margin: 0 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.project-indicator.active {
+    background-color: var(--accent-color);
+    transform: scale(1.3);
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+    .project-actions {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .project-actions a {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        min-width: 0;
+    }
+    
+    .project-tags {
+        justify-content: center;
+    }
+    
+    .image-click-hint {
+        opacity: 0.7; /* Always slightly visible on mobile */
+    }
+    
+    .project-nav-btn {
+        width: 45px;
+        height: 45px;
+    }
+}

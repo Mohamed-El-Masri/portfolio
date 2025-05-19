@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "title": "Real Estate Development Platform",
+    "description": "Full Stack project with ASP.NET Web API, Angular, SQL Server, Entity Framework, AutoMapper",
+    "image": "assets/img/projects/balance.jpg",
+    "links": {
+      "live": null,
+      "code": null
+    },
+    "tags": ["ASP.NET Web API", "Angular", "SQL Server", "Entity Framework", "AutoMapper"]
+  },
+  {
+    "id": 2,
+    "title": "Vyrlo – Local Business Directory",
+    "description": "Full-stack directory application using ASP.NET Web API backend with native JavaScript frontend",
+    "image": "assets/img/projects/Vyrlo.png",
+    "links": {
+      "live": null,
+      "code": "https://github.com/Mohamed-El-Masri/Vyrlo-documentation"
+    },
+    "tags": ["ASP.NET Web API", "JavaScript ES6+", "HTML5", "CSS3"]
+  },
+  {
+    "id": 3,
+    "title": "EventWaw - Event Management System",
+    "description": "Full-stack event management platform with ticket purchasing functionality",
+    "image": "assets/img/projects/eventWaw.png",
+    "links": {
+      "live": null,
+      "code": "https://github.com/Mohamed-El-Masri/EVENTWAW"
+    },
+    "tags": ["ASP.NET Web API", "JavaScript ES6+", "HTML5", "CSS3"]
+  },
+  {
+    "id": 4,
+    "title": "Government Building Permit Campaign",
+    "description": "Arabic Landing Page built with React.js, Vite, CSS3, and JavaScript",
+    "image": "assets/img/projects/GovernmentBuildingPermitCampaign.png",
+    "links": {
+      "live": "https://balance-presentation.netlify.app/",
+      "code": null
+    },
+    "tags": ["React.js", "Vite", "CSS3", "JavaScript"]
+  },
+  {
+    "id": 5,
+    "title": "E-Commerce Website",
+    "description": "E-Commerce site built with HTML5, Native JavaScript, and CSS3",
+    "image": "assets/img/projects/E-commerce.png",
+    "links": {
+      "live": "https://mohamed-el-masri.github.io/e-commerce-website/pages/home.html",
+      "code": "https://github.com/Mohamed-El-Masri/e-commerce-website"
+    },
+    "tags": ["HTML5", "JavaScript", "CSS3"]
+  }
+]
