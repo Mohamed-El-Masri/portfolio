@@ -1,13 +1,8 @@
-// Initialize EmailJS with your public key
-(function() {
-    emailjs.init("0jrveAI7UnN8l3sXW"); // Replace with your actual public key
-})();
 
-// Function to handle form submission
+// Function to handle Formspree form submission
 function sendMail(event) {
     event.preventDefault();
 
-    // Get form elements
     const form = document.getElementById('contact-form');
     const submitButton = form.querySelector('button[type="submit"]');
     const originalButtonText = submitButton.innerHTML;
@@ -16,32 +11,33 @@ function sendMail(event) {
     submitButton.disabled = true;
     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
 
-    // Get form data
-    const templateParams = {
-        name: form.name.value,
-        email: form.email.value,
-        subject: form.subject.value,
-        message: form.message.value
-    };
+    // Prepare form data
+    const formData = new FormData(form);
 
-    // Send email using EmailJS
-    emailjs.send(
-        'service_6wgzufy', // Replace with your service ID
-        'template_2yfytih', // Replace with your template ID
-        templateParams
-    )
-    .then(function(response) {
-        // Show success message
-        showFormMessage('success', 'Thank you! Your message has been sent.');
-        form.reset();
+    // Replace with your Formspree endpoint
+    const formspreeEndpoint = 'https://formspree.io/f/mnnzwvla';
+
+    fetch(formspreeEndpoint, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
     })
-    .catch(function(error) {
-        // Show error message
+    .then(response => response.json())
+    .then(data => {
+        if (data.ok) {
+            showFormMessage('success', 'Thank you! Your message has been sent.');
+            form.reset();
+        } else {
+            showFormMessage('error', 'Sorry, something went wrong. Please try again later.');
+        }
+    })
+    .catch(error => {
         showFormMessage('error', 'Sorry, something went wrong. Please try again later.');
-        console.error('EmailJS error:', error);
+        console.error('Formspree error:', error);
     })
-    .finally(function() {
-        // Reset button state
+    .finally(() => {
         submitButton.disabled = false;
         submitButton.innerHTML = originalButtonText;
     });
